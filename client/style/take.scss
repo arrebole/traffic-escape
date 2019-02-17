@@ -1,0 +1,23 @@
+@import "./mixins/index.scss";
+
+#Take{
+    text-align: center;
+    padding: 20px;
+}
+.take-content{
+    color: darkslategray;
+    p{
+        font-size: 1.4em;
+        @include automatic-line-break;
+        .take-content-core{
+            color: #e73;
+        }
+    }
+    .container-url{
+        font-size: 1.2em;
+    }
+    .content-url{
+        color: #b760f0;
+        display: block;
+    }
+}

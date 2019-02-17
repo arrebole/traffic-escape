@@ -1,0 +1,153 @@
+@import "./mixins/index.scss";
+
+$input-font-color: rgb(150, 150, 150);
+
+@mixin minix-wallpaper{
+    height: 937px;
+    background-size: cover;   
+}
+
+@mixin minx-black-veil{
+    box-shadow: none !important;
+}
+
+@mixin minx-input-style {
+    border: 1px solid #dadcdd;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-indent: 8px;
+    outline: none;
+
+}
+
+@mixin mixin-input-placeholderFontColor($color) {
+    
+    &::-webkit-input-placeholder { /* WebKit browsers */
+        color: $color;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: $color;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: $color;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: $color;
+    }
+
+}
+
+.header-size {
+    width: 100%;
+    height: 56px;
+}
+.home-btn{
+    font-size: 14px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgba(219, 219, 219, 0.575);
+    border: 1px solid rgba(219, 219, 219, 0.404);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer; 
+    outline: none;
+    width: 10%;
+    &:hover{
+        background-color: rgba(204, 204, 204, 0.815);
+    }
+}
+
+
+
+@media screen and (min-width: 720px){
+    .wallpaper{
+        @include minix-wallpaper();
+        // background-image: url("../assets/wallhaven-1280x872.jpg");
+        background: url("../assets/blue-gradients.020-wh.jpg") top center/cover no-repeat fixed;
+    }
+    .black-veil{
+        @include minx-black-veil();
+        background-color: rgba(36,33,46,0.48) !important;
+    }
+    .main-container{
+        margin-top: 220px;
+        padding: 15px 35px;
+        width: 30%;
+        min-width: 500px;
+        
+        h4{
+            margin: 10px;
+            color: rgb(255, 255, 255);
+        }
+        .input-box{
+            display: flex; 
+            
+            input{
+                font-size: 18px;
+                height: 50px;
+                @include minx-input-style();
+                @include mixin-input-placeholderFontColor(rgba(255, 255, 255, 0.7));
+                background-color: rgba(255,255,255,.1);
+                color: #fff;
+                border: none;
+            }
+        }
+        .result{
+            color: rgb(255, 255, 255);
+            padding: 10px;
+            p{
+                margin: 6px;
+                @include automatic-line-break();
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 720px){
+    body{
+        background-color: #f6f8fa!important;
+    }
+    .wallpaper{
+        @include minix-wallpaper();
+    }
+    .black-veil{
+        @include minx-black-veil();
+        background-color: #24292e !important;
+    }
+    .main-container{
+        width: 85%;
+        color: #24292e;
+        padding-top: 40px;
+        h4{
+            margin: 10px;
+        }
+        .input-box{
+            display: flex;
+            border: 1px solid #d1d5da;
+            border-radius: 3px;
+            background-color: #fff;
+            padding: 8px 8px;
+            overflow: hidden;
+            input{
+                font-size: 16px!important;
+                height: 40px;
+                @include minx-input-style();
+                @include mixin-input-placeholderFontColor(rgb(209, 209, 209));
+            }
+        }
+        .result{
+            padding: 10px;
+            p{
+                margin: 6px;
+                @include automatic-line-break();
+            }
+        }
+    }
+}
+
+
+
+

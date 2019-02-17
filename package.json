@@ -1,0 +1,32 @@
+{
+  "name": "traffic-escape",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "api": "node ./service/main.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "ioredis": "^4.6.2",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.4.0",
+    "@vue/cli-plugin-typescript": "^3.4.0",
+    "@vue/cli-service": "^3.4.0",
+    "node-sass": "^4.9.0",
+    "normalize.css": "^8.0.1",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.3.3",
+    "vue": "^2.5.22",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.0.0",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.21",
+    "vuex": "^3.0.1"
+  }
+}

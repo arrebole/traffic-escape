@@ -1,0 +1,6 @@
+// 文字自动换行
+@mixin automatic-line-break {
+    word-break:normal;
+    white-space:pre-warp;
+    word-wrap:break-word;
+} 
