@@ -6,7 +6,7 @@
         <section class="main-container">
           <h4>Black hole</h4>
           <div class="input-box">
-            <input placeholder="道路千万条，安全第一条" type="text" v-model="inputText">
+            <input placeholder="道路千万条，安全第一条" type="text" v-model="inputText" @keyup.enter="transformer()" >
             <button class="home-btn" @click="transformer()">
               <span class="iconfont icon-fasong"></span>
             </button>

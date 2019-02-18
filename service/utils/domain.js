@@ -2,7 +2,7 @@
 let domain = process.env.domain || null
 
 if (domain == null) {
-    domain = "95.179.158.86"
+    domain = "http://gkdark.xyz"
 }
 
 module.exports = domain;

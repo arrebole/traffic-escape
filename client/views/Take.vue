@@ -1,23 +1,31 @@
 <template>
   <div id="Take">
-    <div v-if="notfound" class="take-notfound">
-      <h1>没有找到任何内容</h1>
+    <div v-if="loading" class="take-notfound">
+      <h1>正在寻找...</h1>
     </div>
-    <div v-else class="take-content">
-      <h1>累计 {{ count }} 次交易</h1>
 
-      <div class="container-url" v-if="haveUrl">
-        解析到的链接：
-        <a class="content-url" v-for="(item, index) in contentUrls" :href="item" :key="index">
-          {{ item }}
-        </a>
-  
+    <template v-else>
+      <div v-if="!isfound" class="take-notfound">
+        <h1>Error: 寻找丢失...</h1>
       </div>
-      <p>
-        交易内容:
-        <span class="take-content-core">{{ content }}</span>
-      </p>
-    </div>
+      <div v-else class="take-content">
+        <h1>累计 {{ count }} 次交易</h1>
+
+        <div class="container-url" v-if="haveUrl">
+          解析到的链接：
+          <a
+            class="content-url"
+            v-for="(item, index) in contentUrls"
+            :href="item"
+            :key="index"
+          >{{ item }}</a>
+        </div>
+        <p>
+          交易内容:
+          <span class="take-content-core">{{ content }}</span>
+        </p>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -32,7 +40,9 @@ interface httpRes {
 }
 
 interface mydata {
-  notfound: boolean;
+  loading: boolean;
+  isfound: boolean;
+
   hash: string;
   code: number;
   count: number;
@@ -45,7 +55,8 @@ interface mydata {
 export default Vue.extend({
   data(): mydata {
     return {
-      notfound: true,
+      loading: true,
+      isfound: false,
       hash: "",
       code: 1,
       count: 0,
@@ -58,19 +69,21 @@ export default Vue.extend({
   created() {
     this.hash = this.$route.params.hash;
     api.take(this.hash).then(res => {
-      if (res.data.code == 1) {
-        this.notfound = true;
-      }
       this.refresh(res.data);
       this.analyze();
+      this.loading = false;
     });
   },
   methods: {
     // 更新数据
     refresh(data: httpRes) {
+      if (data.code == 0) {
+        this.isfound = true;
+      } else {
+        this.isfound = false;
+      }
       this.count = data.count;
       this.content = data.content;
-      this.notfound = false;
     },
     // 匹配链接
     analyze() {
