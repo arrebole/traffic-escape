@@ -1,9 +1,6 @@
 const Router = require("koa-router");
 const sql = require("./sql");
-const { newHashBase64 } = require("./utils");
-
-const domain = "http://loaclhost/";
-
+const { newHashBase64, domain } = require("./utils");
 
 const router = new Router();
 router.post('/api/save', async (ctx, next) => {
@@ -19,7 +16,7 @@ router.post('/api/save', async (ctx, next) => {
         ctx.body = JSON.stringify({
             "code": 0,
             "message": "已存在",
-            "content": `${domain + hash}`,
+            "content": `${domain}/${hash}`,
         })
         return;
     }
@@ -28,7 +25,7 @@ router.post('/api/save', async (ctx, next) => {
     ctx.body = JSON.stringify({
         "code": 0,
         "message": "存储成功",
-        "content": `${domain + hash}`,
+        "content": `${domain}/${hash}`,
     })
 })
 

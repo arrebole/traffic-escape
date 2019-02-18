@@ -15,9 +15,7 @@ const Db1 = new Redis(createDbConfig(1));
 
 // 验证数据库是否已经存在key
 function isExist(hash) {
-  return Db0.exists(hash).then((res)=>{
-    return res;
-  })
+  return Db0.exists(hash)
 }
 
 // 储存key、value

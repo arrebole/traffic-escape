@@ -4,7 +4,7 @@ const router = require("./router");
 const bodyParser = require('koa-bodyparser')
 const app = new Koa();
 
-app.env = "development";
+app.env = "production";
 
 app
     .use(bodyParser())
